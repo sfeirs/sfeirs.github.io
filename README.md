@@ -3,5 +3,9 @@
 **Author:** sfeirs
 **Last update:** 12/12/2025
 
-## Visualization 1
-[add visualization here]
+## Plot
+
+A plot I made for Gender Gap in Unemployment Rates in Namibia:
+
+![Gender Gap in Unemployment Rates in Namibia](images/GenderGapNamibia.png)
+
