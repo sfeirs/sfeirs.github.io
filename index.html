@@ -71,10 +71,30 @@
         <div class="chart-description">
             <h2>Section 2: Another chart</h2>
             <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                Here is another example of adding a chart to your website.
+                Adding second chart.
             </p>
         </div>
         <figure id="Location2"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+    </section>
+
+    <section>
+        <div class="chart-description">
+            <h2>Section 3: Another chart</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+                Adding third chart.
+            </p>
+        </div>
+        <figure id="Location3"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+    </section>
+
+     <section>
+        <div class="chart-description">
+            <h2>Section 4: Adding my own charts from the Economics Observatory Growth Lab</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+                Adding my own chart1.json
+            </p>
+        </div>
+        <figure id="Location4"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
     </section>
 
     <!-- Do you want to add more sections? -->
@@ -96,8 +116,16 @@
         // Do you want to add more graphs?
         // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
         // e.g. 
-        let figure_3_spec = "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartLine2.json";
-        vegaEmbed('#Location2', figure_3_spec)
+        let figure_2_spec = "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartLine2.json";
+        vegaEmbed('#Location2', figure_2_spec)
+
+        let figure_3_spec = "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartBar4.json";
+        vegaEmbed('#Location3', figure_3_spec)
+
+        let figure_4_spec = "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/canada_uemp.json";
+
+        vegaEmbed('#Location4', figure_4_spec)
+
 
         
     </script>
