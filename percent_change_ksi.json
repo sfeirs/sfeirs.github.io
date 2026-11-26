@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { 
+    "text": "Greatest Percentage Change in Serious Cyclist Injuries in London",
+    "subtitle": "Cyclists killed or seriously injured (KSI, adjusted) by region in Great Britain, 2017 to 2025"
+  },
+  
+  "data": {"url": "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/filtered_cyclist_KSI.csv"},
+    "width": 500,
+    "height": 400,
+
+  "transform": [
+    {"fold": ["2017", "2018", "2019", "2020", "2021",
+              "2022 \\[note 3\\]", "2023 \\[note 3\\]", "2024", "2025"],
+     "as": ["year", "casualties"]},
+    {"calculate": "slice(datum.year, 0, 4)", "as": "year"},
+    {"filter": "datum.year == '2017' || datum.year == '2025'"},
+    {"aggregate": [{"op": "sum", "field": "casualties", "as": "total"}],
+     "groupby": ["Region or Country", "year"]},
+    {"pivot": "year", "value": "total", "groupby": ["Region or Country"]},
+    {"calculate": "((datum['2025'] - datum['2017']) / datum['2017']) * 100", "as": "change"}
+  ],
+  "encoding": {
+    "y": {"field": "Region or Country", "type": "nominal", "title": "Region",
+          "sort": {"field": "change", "op": "max", "order": "descending"}}
+  },
+  "layer": [
+    {"mark": {"type": "rule", "strokeWidth": 2},
+     "encoding": {
+       "x": {"field": "change", "type": "quantitative", "title": "Change in KSI, 2017 to 2025 (%)"},
+       "x2": {"datum": 0},
+       "color": {"condition": {"test": "datum['Region or Country'] == 'London'", "value": "#3CA7CB"},
+                 "value": "#94a3b8"}}},
+    {"mark": {"type": "point", "filled": true, "size": 130, "opacity": 1},
+     "encoding": {
+       "x": {"field": "change", "type": "quantitative"},
+       "color": {"condition": {"test": "datum['Region or Country'] == 'London'", "value": "#3CA7CB"},
+                 "value": "#94a3b8"},
+       "tooltip": [
+         {"field": "Region or Country", "title": "Region"},
+         {"field": "2017", "title": "KSI 2017"},
+         {"field": "2025", "title": "KSI 2025"},
+         {"field": "change", "title": "Change (%)", "format": ".1f"}]}}
+  ]
+}

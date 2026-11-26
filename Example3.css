@@ -1,67 +1,159 @@
-/* This is an example CSS file. If you include it in your portfolio, it'll provide some clean and basic styling */
-/* for your page. Feel free to experiment with the values, or copy them into a new file and use that instead. */
 
-/* These are comments in CSS. Comments don't do anything except explain your working to make code easier to understand. */
-
-
-body { /* We can style any HTML element by using its name - here we're styling the body */
-  /* We want text that uses a clean sans-serif font, is usually 16px big and close to black */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: #270ac9;
-  line-height: 1.6;
-  /* we want a white page, that's centered and not too wide */
-  background-color: #31d5ef;
-  margin:0 auto;
-  max-width: 800px;
-  padding-top: 60px;
+/* Colors to use in design: */
+:root {
+  --background: #E6F3F2;   /* limestone */
+  --surface:    #FBF7F0;   /* for chart backgrounds */
+  --text:       #2A211C;   /* brown espresso */
+  --heading:    #2A211C;   /* Charred Espresso */
+  --accent:     #B8321F;   /* Paprika Red: links, highlights */
+  --accent-2:   #E3A23B;   /* Saffron: hover states, small touches */
+  --earth:      #C96A4A;   /* Terracotta: borders, secondary details */
+  --green:      #6B7A3C;   /* Olive Grove */
+  --blue:       #1E4D6B;   /* Aegean Blue: use rarely */
+  --sea:        #8EC9CC;   /* Light Sea Blue: a cool hint */
+  --sea-wash:   #E6F3F2;   /* very pale sea blue, for chart panels */
+  --on-accent:  #FFF8F0;   /* text on paprika buttons */
 }
 
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  color: #2209c3;
-  margin-top: 24px;
-  margin-bottom: 16px;
+/* full page */
+body {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background-color: var(--background);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+ 
+header {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--sea);
+}
+ 
+
+h1, h2 {
+  font-family: 'Fraunces', Georgia, serif;
   font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 16px 0;
 }
-
-/* We want the headings to be a little bigger than the paragraph text */
-.big { /* This is the class we created in the HTML file, you can use it to style any element */
-  font-size: 2.5em;
+ 
+h1 {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
 }
-
+ 
 h2 {
-  font-size: 1.75em;
+  font-size: 1.9rem;
 }
 
-.small {
-  font-size: 1.25em;
-}
-
-/* Paragraph */
+ 
+/* Text */
 p {
-  margin-bottom: 1em;
-  font-weight: 300;
+  max-width: 65ch;
+}
+ 
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+ 
+a:hover {
+  color: var(--heading); 
+  /* make the hover color light blue */
 }
 
 section {
-  margin-bottom: 2.5em;  /* We want a little more space between sections */
+  padding: 56px 0 16px;
+  border-bottom: 1px solid var(--sea);
+}
+ 
+/* Charts sit directly on the page */
+figure {
+  margin: 32px 0 12px 0;
+  max-width: 720px;   /* keeps charts from getting too big for the page */
 }
 
-/* Links */
-/* We want the links to be a little more visible  and a different color */
-a {
-  color: #065f46;
+/* Make every chart the full width of its space (but not the "..." menu) */
+figure .marks {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px 32px;
+  margin-top: 32px;
+}
+ 
+.facts p {
+  margin: 0;
+}
+ 
+.fact-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+footer {
+  padding-top: 32px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Top bar ---------- */
+
+.site-bar {
+  position: sticky;          /* stays at the top as you scroll */
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 20px clamp(20px, 5vw, 64px);
+  background-color: var(--background, #F5EEE3);
+  border-bottom: 1px solid var(--sea, #8EC9CC);
+}
+
+
+.site-bar-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--text, #2A211C);
   text-decoration: none;
+ 
+  margin-left: -55px;   /* move my name left to align with the underline*/
+
 }
 
-a:hover {
-  text-decoration: underline;
+/* The links on right side*/
+.site-bar-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-  
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
+
+.site-bar-links a {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text, #2A211C);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  transition: background-color 0.2s;
+}
+
+.site-bar-links a:hover {
+  background-color: var(--card, #8EC9CC);
+  color: var(--text, #2A211C);
 }

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Malawi: People using safely managed drinking water services (% of population).",
+  "data": {
+    "url": "https://api.worldbank.org/v2/country/MW/indicator/SH.H2O.SMDW.ZS?format=json",
+    "format": {"property": "[1]"}
+  },
+  "transform": [
+    {"filter": "datum.value != null"},
+    {"filter": "toNumber(datum.date) >= 2000"}
+  ],
+  "mark": {"type": "line", "tooltip": true, "color": "#1E4D6B"},
+  "encoding": {
+    "x": {"field": "date", "type": "temporal", "timeUnit": "year", "title": "Year"},
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Percentage of population (%)"
+    }
+  }
+}

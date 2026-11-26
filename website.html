@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="scroll-page"> 
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Example3.css">
+    <title>My Portfolio</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+
+<body>
+     <h1>My Portfolio</h1>
+    <section>
+        <h2>CC1: Hosting. Display charts in your own site.</h2>
+        <figure id="Location1"></figure>
+        <figure id="Location2"></figure>
+        <figure id="Location3"></figure>
+    </section>
+ 
+ 
+    <section>
+        <h2>CC2. Building. Creating your own visualisations</h2>
+        <figure id="Location4"></figure>
+        <figure id="Location5"></figure>
+    </section>
+ 
+ 
+    <section>
+        <h2>CC3. Policy debate. Use a visualisation in policy commentary</h2>
+        <p>Policy debate topic: Road Safety for cyclists in London.</p>
+        <p>
+            Data sourced from: <a href="https://www.gov.uk/government/statistical-data-sets/road-safety-statistics-data-tables#geographical-breakdowns-ras04">UK Road Safety Statistics</a>,
+            table RAS0403, sheet Road_user_type. The metric is "KSI (adjusted)" (killed or seriously injured), with London as the region, from 2017.
+        </p>
+        <figure id="Location6"></figure>
+        <p>As shown in this graph, there has been a significant increase in cyclists being killed or seriously injured in London.</p>
+ 
+        <p>Reported road casualties by road user type, comparing regions across Great Britain, 10 years up to 2025.</p>
+        <figure id="Location7"></figure>
+    </section>
+ 
+ 
+    <section>
+        <h2>CC4. Replication. Recreate, then improve, someone else's chart</h2>
+        <p>Original chart:</p>
+        <img src="oecd.jpg" width="700" height="500"> 
+        <p>Recreated chart:</p>
+        <figure id="Location8"></figure>
+
+        <p>New chart:</p>
+        <figure id="Location9"></figure>
+    </section>
+
+    <section>
+        <h2>CC5. Accessing data: (1) API, (2) Scraper</h2>
+        <h3>API TASK:</h3>
+        <figure id="Location10"></figure>
+        <figcaption>
+            <h4>The base URL:</h4> 
+            <p>https://api.worldbank.org/v2/</p>
+           
+            <h4>Elements needed to call the data: </h4>
+            <ol>
+                <li>country code: MW (for Malawi)</li>
+                <li>indicator code: SH.H2O.SMDW.ZS</li>
+            </ol>
+            <h4>Describe the data that is returned:</h4>
+            <p>The data is returned as a ?format=json</p>
+
+            <h4>Full URL used:</h4>
+            <p>"https://api.worldbank.org/v2/country/MW/indicator/SH.H2O.SMDW.ZS?format=json"</p>
+             <a href="https://api.worldbank.org/v2/country/MW/indicator/SH.H2O.SMDW.ZS?format=json">FULL API URL LINKED</a>
+        
+        
+            </figcaption>
+        <h3>SCRAPER TASK:</h3>
+        <figure id = "Location11"> </figure>
+        <a href="https://colab.research.google.com/drive/1PUJ5TYVg13KRUWi5O3szvV0xBp0cF9Re?usp=sharing">Google Collab Code</a>
+        <p>TO DO: comment on data sources, challenges, etc.</p>
+
+    </section>
+ 
+    
+ 
+    <script>
+        // vegaEmbed
+        let style = { config: {
+            font: "Inter",
+            range: { category: ["#B8321F", "#1E4D6B", "#E3A23B", "#6B7A3C", "#8EC9CC"] },
+            view: { stroke: null },          
+            axis: { gridColor: "#EFE7DA", domainColor: "#6E625A", labelColor: "#6E625A", titleColor: "#2A211C" },
+            title: { font: "Fraunces", fontSize: 16, color: "#2A211C" }
+        } };
+
+        vegaEmbed("#Location1", "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json");
+        vegaEmbed("#Location2", "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartLine2.json", style);
+        vegaEmbed("#Location3", "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartBar4.json",style);
+        vegaEmbed("#Location4", "chart2.json", style);
+        vegaEmbed("#Location5", "brazilgdp.json",style);
+        vegaEmbed("#Location6", "cyclist_ksi.json",style);
+        vegaEmbed("#Location7", "percent_change_ksi.json",style);
+        vegaEmbed("#Location8", "recreate_chart.json");
+        vegaEmbed("#Location9", "task4_newchart.json");
+        vegaEmbed("#Location10", "api.json", style)
+        vegaEmbed('#Location11', "cc5map.json")
+    </script>
+ 
+</body>
+</html>
+ 

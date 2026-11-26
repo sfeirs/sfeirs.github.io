@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": ["Figure 5.2. While legal requirements to adopt service standards are adopted in most OECD ", 
+    "countries, more can be done to embed them in digital investments decision-making"
+    ],
+    "anchor": "start",
+    "subtitle": "Percentage of OECD countries reporting mechanisms to support the application of service standards, by type, 2023 and 2025",
+    "fontSize": 14,
+    "subtitleFontSize": 12,
+    "color": "#E36B36",
+    "subtitleColor": "#000000"
+  },
+  "data": {
+    "values": [
+      {"category":"Legal and regulatory Framework", "group": "2023", "value":40},
+      {"category":"Legal and regulatory Framework", "group": "2025", "value":71},
+      {"category":"Awareness raising", "group": "2023", "value":51},
+      {"category":"Awareness raising", "group": "2025", "value":63},
+      {"category":"Digital skills development", "group": "2023", "value":41},
+      {"category":"Digital skills development", "group": "2025", "value":59},
+      {"category":"Approval or funding of new projects", "group": "2023", "value":41},
+      {"category":"Approval or funding of new projects", "group": "2025", "value":55}
+    ]
+  },
+  "width":700,
+  "height":500,
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "category", "title": ["Note: Percentage of OECD countries reporting mechanisms to support the application", "of service standards, by type. Data for 2023 are not available for Germany and the United States.",
+  "Source: OECD Survey on Digital Government (2023, 2025)."], "sort":null,"axis": {"labelAngle": 0}},
+    "y": {"field": "value", "type": "quantitative", "title":"Percentage (%)"},
+    "xOffset": {"field": "group"},
+    "color": {"field": "group", "legend":{"title":"Year"}, "scale":{"range": ["#E36B36", "#A84A1B"]}}
+    
+    }
+    
+  }
+
+

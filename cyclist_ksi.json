@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Serious cyclist injuries in London have risen since 2017",
+    "subtitle": "Cyclists killed or seriously injured (KSI, adjusted), 2017 to 2025",
+    "anchor": "start", "fontSize": 22, "fontWeight": 600, "subtitleFontSize": 14, "offset": 16
+  },
+  "data": {"url": "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/filtered_cyclist_KSI.csv"},
+  "width": 500,
+  "height": 380,
+  "transform": [
+    {"filter": "datum['Region or Country'] == 'London'"},
+    {"fold": ["2017","2018","2019","2020","2021",
+              "2022 \\[note 3\\]","2023 \\[note 3\\]","2024","2025"],
+     "as": ["year", "casualties"]},
+    {"calculate": "slice(datum.year, 0, 4)", "as": "year"},
+    {"aggregate": [{"op": "sum", "field": "casualties", "as": "ksi"}],
+     "groupby": ["year"]}
+  ],
+  "mark": {"type": "line", "point": {"size": 80, "color": "#0486b2"}, "strokeWidth": 3, "color": "#05ce5f"},
+  "encoding": {
+    "x": {"field": "year", "type": "ordinal", "title": "Year",
+          "axis": {"grid": false, "labelAngle": 0}},
+    "y": {"field": "ksi", "type": "quantitative",
+          "title": "Cyclists killed or seriously injured",
+          "scale": {"zero": true}}
+  }
+}

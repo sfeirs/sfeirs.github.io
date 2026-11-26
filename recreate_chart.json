@@ -1,0 +1,177 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": [
+      "Figure 5.2. While legal requirements to adopt service standards are adopted in most OECD ",
+      "countries, more can be done to embed them in digital investments decision-making"
+    ],
+    "anchor": "start",
+    "subtitle": "Percentage of OECD countries reporting mechanisms to support the application of service standards, by type, 2023 and 2025",
+    "fontSize": 14,
+    "subtitleFontSize": 12,
+    "color": "#E36B36",
+    "subtitleColor": "#000000"
+  },
+  "width": 900,
+  "height": 500,
+
+
+  "data": {
+    "values": [
+      {
+        "category": "Legal and regulatory framework",
+        "value": 73,
+        "marker": 40
+      },
+      {
+        "category": "Awareness raising",
+        "value": 64,
+        "marker": 52
+      },
+      {
+        "category": "Digital skills development",
+        "value": 59,
+        "marker": 43
+      },
+      {
+        "category": "Approval or funding of new projects",
+        "value": 56,
+        "marker": 43
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": "#f0f0f0"
+    },
+    "axis": {
+      "gridColor": "#ffffff",
+      "gridWidth": 1.6
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "category",
+      "type": "nominal",
+      "title": ["Note: Percentage of OECD countries reporting mechanisms to support the application", "of service standards, by type. Data for 2023 are not available for Germany and the United States.",
+  "Source: OECD Survey on Digital Government (2023, 2025)."],
+      "sort": null,
+      "axis": {
+        "tickBand": "extent",
+        "tickColor": "#222222",
+        "labelAngle": 0,
+        "labelLimit": 0,
+        "domainColor": "#222222",
+        "labelFontSize": 13,
+        "grid": true
+      }
+    }
+  },
+  "layer": [
+    {"mark": {
+        "type": "bar",
+        "width": {
+          "band": 0.4
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false,
+            "labelExpr": "datum.value + '%'"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "category"
+          },
+          {
+            "field": "value",
+            "title": "Bar"
+          }
+        ],
+        "color": {
+          "field": "series",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "2025",
+              "2023"
+            ],
+            "range": [
+              "#e8c4a4",
+              "#b8692a"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal",
+            "fillColor": "#f0f0f0",
+            "padding": 10,
+            "columnPadding": 120,
+            "labelFontSize": 15
+          }
+        }
+      },
+      "transform": [
+        {
+          "calculate": "'2025'",
+          "as": "series"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "point",
+        "shape": "diamond",
+        "filled": true,
+        "size": 130,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "marker",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "color": {
+          "field": "series",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "category"
+          },
+          {
+            "field": "marker",
+            "title": "Diamond"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "'2023'",
+          "as": "series"
+        }
+      ]
+    }
+  ]
+}
