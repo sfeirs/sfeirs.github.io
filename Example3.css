@@ -71,17 +71,25 @@ section {
   border-bottom: 1px solid var(--sea);
 }
  
+
+/* .chart-card {
+  width: 100%;
+} */
 /* Charts sit directly on the page */
 figure {
   margin: 32px 0 12px 0;
+  min-width: 300px;
   max-width: 720px;   /* keeps charts from getting too big for the page */
-}
-
-/* Make every chart the full width of its space (but not the "..." menu) */
-figure .marks {
   width: 100% !important;
   height: auto !important;
 }
+
+/* Make every chart the full width of its space (but not the "..." menu) */
+/* figure .marks {
+  width: 100% !important;
+  height: auto !important;
+} */
+
 
 .facts {
   display: grid;
