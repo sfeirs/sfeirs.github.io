@@ -84,13 +84,18 @@
         <figure id = "Location11"> </figure>
         <br>
         <a href="https://colab.research.google.com/drive/1PUJ5TYVg13KRUWi5O3szvV0xBp0cF9Re?usp=sharing">Google Collab Code</a>
-        <p>TO DO: comment on data sources, challenges, etc.</p>
+        <p>
+        The source used for this data is from World Population Review: <a href = https://worldpopulationreview.com/country-rankings/water-stress-by-country >World Population Review</a>
+        <br>
+
+        This data provided the score and baseline of each country. Some countries had no score but were placed in the Category: 1 - Low (10%). To avoid assuming a country's water stress level without a score, I have filtered countries that did not have a score to appear as gray areas on the map. 
+    </p>
 
     </section>
 
 
       <section>
-        <h2>CC6. </h2>
+        <h2>CC6. Loops. Build a UK devolution dashboard </h2>
         <p></p>
         
         <a href="DevolutionDashboard.html">Devolution Dashboard</a>
@@ -115,8 +120,8 @@
         vegaEmbed("#Location1", "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json");
         vegaEmbed("#Location2", "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartLine2.json", style);
         vegaEmbed("#Location3", "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartBar4.json",style);
-        vegaEmbed("#Location4", "chart2.json", style);
-        vegaEmbed("#Location5", "brazilgdp.json",style);
+        vegaEmbed("#Location4", "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/portfolio_data/chart2.json");
+        vegaEmbed("#Location5", "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/portfolio_data/brazilgdp.json");
         vegaEmbed("#Location6", "cyclist_ksi.json",style);
         vegaEmbed("#Location7", "percent_change_ksi.json",style);
         vegaEmbed("#Location8", "recreate_chart.json");
