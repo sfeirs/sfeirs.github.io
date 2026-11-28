@@ -8,6 +8,7 @@
   },
   "width": 500,
   "height": 300,
+  "autosize": {"type": "fit-x", "contains": "padding"},
   "data": {
     "url": "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/portfolio_data/W92000004.json",
     "format": {"type": "json", "property": "value"}
