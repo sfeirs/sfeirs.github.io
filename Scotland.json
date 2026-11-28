@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Scotland: Greenhouse Gas Emissions Per Capita, 2005–2024",
+    "subtitle": [
+  "Tonnes of CO2 equivalent (tCO2e) per capita",
+  "Includes territorial emissions of carbon dioxide (CO2), methane (CH4) and nitrous oxide (N2O)"
+]
+  },
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/portfolio_data/S92000003.json",
+    "format": {"type": "json", "property": "value"}
+  },
+  "transform": [
+    {"window": [{"op": "row_number", "as": "i"}]},
+    {"calculate": "2004 + datum.i", "as": "year"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"domain": [2005, 2024], "nice": false},
+      "axis": {"format": "d", "values": [2005, 2010, 2015, 2020, 2024]}
+    },
+    "y": {
+      "field": "data",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"zero": true}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "area", "color": "#6B7A3C", "opacity": 0.12, "interpolate": "monotone"}
+    },
+    {
+      "mark": {"type": "line", "color": "#6B7A3C", "strokeWidth": 2.5, "interpolate": "monotone"}
+    },
+    {
+      "mark": {"type": "point", "filled": true, "color": "#6B7A3C", "size": 36, "opacity": 1},
+      "encoding": {
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "data", "title": "tCO2e per person", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year == 2024"}],
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 13, "fontWeight": 600, "color": "#6B7A3C"},
+      "encoding": {"text": {"field": "data", "type": "quantitative", "format": ".1f"}}
+    }
+  ],
+  "config": {
+    "font": "Inter, Helvetica Neue, Arial, sans-serif",
+    "view": {"stroke": null},
+    "axis": {
+      "grid": false,
+      "domainColor": "#BDBDBD",
+      "tickColor": "#BDBDBD",
+      "labelColor": "#6B6B6B",
+      "labelFontSize": 11
+    },
+    "axisY": {"domain": false, "ticks": false, "labelPadding": 6},
+    "title": {
+      "anchor": "start",
+      "fontSize": 14,
+      "fontWeight": 600,
+      "color": "#2B2B2B",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#7A7A7A",
+      "subtitlePadding": 6,
+      "offset": 16
+    }
+  }
+}
