@@ -1,22 +1,50 @@
+
+
 <!DOCTYPE html>
-
-
-
-<html>
+<html class="scroll-page"> 
 
 <head>
-    <title>Devolution Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Example3.css">
+    <title>My Portfolio</title>
 
-<!-- Link to my CSS file -->
-<!-- The link needs to point to the CSS file, so it needs to be in the right place -->
-    <link rel="stylesheet" href="Example3.css">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+    #charts { display: grid; grid-template-columns: repeat(3, max-content); gap: 10px; justify-content: center;}
+    .dashboard {max-width: fit-content;margin: 0 auto;}
+    .dashboard h1, .dashboard p {margin-left: 0;margin-right: 0;text-align: left;}
+    </style>
 </head>
-
 
 <body>
 
-<h1>Here's my heading</h1>
-<p>And a paragraph.</p>
+<div class="dashboard"></div>
+<h1>Devolution Dashboard</h1>
+<p>Code was done in: <a href = "https://colab.research.google.com/drive/1ED4PxAJwMNUpDzAAf9oBqSdzkJfLBFqn?usp=sharing">Devolution Google Colab</a> </p>
+<div id="charts"></div>
+</div>
 
+
+
+    
 </body>
 </html>
+
+<script>
+
+    const files = ["WestMidlands", "London", "GreaterManchester", "NorthernIreland", "Scotland", "Wales"];
+
+    for (const file of files) {
+      const div = document.createElement("div");
+      document.getElementById("charts").appendChild(div);
+      vegaEmbed(div, file + ".json", {actions: false});
+    }
+
+  
+
+</script>
+
+
+
