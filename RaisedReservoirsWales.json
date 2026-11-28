@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Large Raised Reservoir in Wales",
+    "anchor": "start"
+  },
+  "width": 300,
+  "height": 350,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/map-data/refs/heads/main/gbr/LAD_WLS_2026_05.json",
+        "format": {"type": "topojson", "feature": "geog"}
+      },
+      "mark": {"type": "geoshape", "fill": "#F3EFE6", "stroke": "#FFFFFF"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sfeirs/sfeirs.github.io/refs/heads/main/wales_nrw_large_raised_reservoirs_registered_information.csv",
+        "format": {
+          "type": "csv",
+          "parse": {"latitude": "number", "longitude": "number", "lastinspectiondate": "date:'%m/%d/%y'"}
+        }
+      },
+      "transform": [
+        {
+          "calculate": "isValid(datum.yearbuilt) && datum.yearbuilt !== '' ? datum.yearbuilt : 'Not available'",
+          "as": "yearbuilt"
+        },{
+          "calculate": "isDate(datum.lastinspectiondate) && isFinite(time(datum.lastinspectiondate)) ? timeFormat(datum.lastinspectiondate, '%d %b %Y') : 'Not available'",
+          "as": "lastinspectiondate"
+        },
+        {
+          "calculate": "isValid(datum.yearbuilt) && datum.yearbuilt !== '' ? datum.     yearbuilt : 'Not available'",
+          "as": "yearbuilt"
+        }
+      ],
+      
+      "mark": {"type": "circle", "size": 35, "opacity": 0.85, "stroke": "white", "strokeWidth": 0.6},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+    
+        "tooltip": [
+          {"field": "reservoir_name", "title": "Name"},
+          {"field": "yearbuilt", "title": "Year Built", "type": "nominal"},
+          {"field": "lastinspectiondate", "title": "Last Inspection"},
+          {"field": "dam_high_risk", "title": "High-Risk"}
+        ],
+        "color":{"field": "dam_high_risk", "title":"High-Risk Reservoir", "scale":{"range": ["#6B7A3C", "#E3A23B", "#B8321F"]}}
+      }
+    }
+  ]
+}
